@@ -4,6 +4,7 @@
 //
 //  Created by Jinfeng Huang on 15/3/7.
 //  Copyright (c) 2015年 Jinfeng Huang. All rights reserved.
+//  Modified by Christopher Lee (LegoZebra) on 15/05/07 - Minor updates for Swift 1.2 Lang / xCode 6.3.1 updates
 //
 
 import UIKit
@@ -48,7 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         // var latitude: CLLocationDegrees = 37.381086
         // var longitude: CLLocationDegrees = -121.983934
         
-        var mylocation = locations[0] as CLLocation
+        var mylocation = locations[0] as! CLLocation
         
         var latitude: CLLocationDegrees = mylocation.coordinate.latitude
         var longitude: CLLocationDegrees = mylocation.coordinate.longitude
@@ -64,7 +65,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         map.setRegion(region, animated: true)
         
         CLGeocoder().reverseGeocodeLocation(mylocation, completionHandler: { (placemark, error) in
-            var place = CLPlacemark(placemark: placemark[0] as CLPlacemark)
+            var place = CLPlacemark(placemark: placemark[0] as! CLPlacemark)
             self.address.text = "\(place.subThoroughfare)\(place.thoroughfare)\(place.subLocality)\(place.locality)\(place.subAdministrativeArea)\(place.administrativeArea)\(place.postalCode)\(place.country)"
             
         })
@@ -77,4 +78,3 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
 
 }
-
